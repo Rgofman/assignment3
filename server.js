@@ -30,24 +30,35 @@ app.get("/dashboard", function (req, res) {
 app.post("/login", function (req, res) {
     var data = {
         userInfo: {
-            username: req.body.username,
-            password: req.body.password
+            password: req.body.password,
+            username: req.body.username
         },
         errorMsg: {
             username: "",
-            password: ""
+            password: "",
+            yn: ""
         }
     };
     if (!data.userInfo.username) {
         data.errorMsg.username = "The username is required";
+        data.errorMsg.yn = 1;
     }
     if (/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(data.userInfo.username)) {
         data.errorMsg.username = "Cant have special characters";
+        data.errorMsg.yn = 1;
     }
+    
     if (!data.userInfo.password) {
-        data.errorMsg.password = "The password is required";
+        data.errorMsg.password = "Password is required";
+        data.errorMsg.yn = 1;
     }
-    res.render("login", { data: data, layout: "main" });
+    console.log(data.userInfo.password);
+    if (data.errorMsg.yn != 1) {
+        res.render("dashboard", { layout: "main2" });
+    }
+    else {
+        res.render("login", { data: data, layout: "main" });
+    }
 });
 
 
@@ -66,7 +77,7 @@ app.post("/registration", function (req, res) {
             lname: req.body.lname,
             password: req.body.password,
             comfPassword: req.body.comfPassword,
-            phone: req.body.password,
+            phone: req.body.phone,
             email: req.body.email
         },
         errorMsg: {
