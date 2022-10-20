@@ -88,46 +88,46 @@ app.post("/registration", function (req, res) {
 
 
     if ((/^\d+$/.test(data.userInfo.phone))) {
-        data.errorMsg.phone = "Error: Numbers only"
+        data.errorMsg.phone = "Numbers only"
         data.errorMsg.yn = 1;
     }
     if (data.userInfo.phone <= 999999999 || data.userInfo.phone >= 10000000000) {
-        data.errorMsg.phone = "Error: Must be valid number"
+        data.errorMsg.phone = "Must be valid number"
         data.errorMsg.yn = 1;
     }
 
     if (!data.userInfo.name) {
-        data.errorMsg.name = "Error: Name is required";
+        data.errorMsg.name = "Name is required";
         data.errorMsg.yn = 1;
     }
     if (!data.userInfo.lname) {
-        data.errorMsg.lname = "Error: Last name is required";
+        data.errorMsg.lname = "Last name is required";
         data.errorMsg.yn = 1;
     }
 
 
     if (!data.userInfo.password) {
-        data.errorMsg.password = "Error: The password is required";
+        data.errorMsg.password = "The password is required";
         data.errorMsg.yn = 1;
     }
 
     else if (data.userInfo.password.length < 6 || data.userInfo.password.length > 12) {
-        data.errorMsg.password = "Error: Must have 6-12 characters";
+        data.errorMsg.password = "Must have 6-12 characters";
         data.errorMsg.yn = 1;
     }
 
     else if (!(/\d/.test(data.userInfo.phone))) {
-        data.errorMsg.password = "Error: Must have one number";
+        data.errorMsg.password = "Must have one number";
         data.errorMsg.yn = 1;
     }
 
     else if (!(/[a-z]/i.test(data.userInfo.phone))) {
-        data.errorMsg.password = "Error: Must have one letter";
+        data.errorMsg.password = "Must have one letter";
         data.errorMsg.yn = 1;
     }
 
     if (data.userInfo.password != data.userInfo.comfPassword) {
-        data.errorMsg.comfPassword = "Error: Passwords don't match";
+        data.errorMsg.comfPassword = "Passwords don't match";
         data.errorMsg.yn = 1;
     }
     if (data.errorMsg.yn != 1) {
