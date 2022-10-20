@@ -51,7 +51,6 @@ app.post("/login", function (req, res) {
 });
 
 
-
 app.get("/registration", function (req, res) {
     res.render("registration", { layout: "main" });
 });
