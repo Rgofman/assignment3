@@ -105,7 +105,6 @@ app.post("/registration", function (req, res) {
         data.errorMsg.yn = 1;
     }
 
-
     if (!data.userInfo.password) {
         data.errorMsg.password = "Password is required";
         data.errorMsg.yn = 1;
@@ -116,12 +115,12 @@ app.post("/registration", function (req, res) {
         data.errorMsg.yn = 1;
     }
 
-    else if (!(/\d/.test(data.userInfo.phone))) {
+    else if (!(/\d/.test(data.userInfo.password))) {
         data.errorMsg.password = "Must have 1 number";
         data.errorMsg.yn = 1;
     }
 
-    else if (!(/[a-z]/i.test(data.userInfo.phone))) {
+    else if (!(/[a-z]/i.test(data.userInfo.password))) {
         data.errorMsg.password = "Must have 1 letter";
         data.errorMsg.yn = 1;
     }
