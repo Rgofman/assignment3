@@ -39,13 +39,13 @@ app.post("/login", function (req, res) {
         }
     };
     if (!data.userInfo.username) {
-        data.errorMsg.username = "Error: The username is required";
+        data.errorMsg.username = "The username is required";
     }
     if (/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(data.userInfo.username)) {
-        data.errorMsg.username = "Error: Cant have special characters";
+        data.errorMsg.username = "Cant have special characters";
     }
     if (!data.userInfo.password) {
-        data.errorMsg.password = "Error: The password is required";
+        data.errorMsg.password = "The password is required";
     }
     res.render("login", { data: data, layout: "main" });
 });
@@ -81,7 +81,7 @@ app.post("/registration", function (req, res) {
     };
 
     if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(data.userInfo.email))) {
-        data.errorMsg.email = "Error: Must be valid email"
+        data.errorMsg.email = "Must be valid"
         data.errorMsg.yn = 1;
     }
 
@@ -101,28 +101,28 @@ app.post("/registration", function (req, res) {
         data.errorMsg.yn = 1;
     }
     if (!data.userInfo.lname) {
-        data.errorMsg.lname = "Last name is required";
+        data.errorMsg.lname = "Name is required";
         data.errorMsg.yn = 1;
     }
 
 
     if (!data.userInfo.password) {
-        data.errorMsg.password = "The password is required";
+        data.errorMsg.password = "Password is required";
         data.errorMsg.yn = 1;
     }
 
     else if (data.userInfo.password.length < 6 || data.userInfo.password.length > 12) {
-        data.errorMsg.password = "Must have 6-12 characters";
+        data.errorMsg.password = "6-12 characters";
         data.errorMsg.yn = 1;
     }
 
     else if (!(/\d/.test(data.userInfo.phone))) {
-        data.errorMsg.password = "Must have one number";
+        data.errorMsg.password = "Must have 1 number";
         data.errorMsg.yn = 1;
     }
 
     else if (!(/[a-z]/i.test(data.userInfo.phone))) {
-        data.errorMsg.password = "Must have one letter";
+        data.errorMsg.password = "Must have 1 letter";
         data.errorMsg.yn = 1;
     }
 
