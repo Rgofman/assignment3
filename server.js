@@ -97,11 +97,11 @@ app.post("/registration", function (req, res) {
     }
 
     if (!data.userInfo.name) {
-        data.errorMsg.name = "Name is required";
+        data.errorMsg.name = "Required";
         data.errorMsg.yn = 1;
     }
     if (!data.userInfo.lname) {
-        data.errorMsg.lname = "Name is required";
+        data.errorMsg.lname = "Required";
         data.errorMsg.yn = 1;
     }
 
